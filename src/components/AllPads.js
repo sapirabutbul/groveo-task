@@ -11,53 +11,26 @@ class AllPads extends React.Component {
       playButton: "PLAY",
     };
   }
-  // componentDidUpdate() {
-  //   console.log(
-  //     "jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj",
-  //     this.props.audiosPlaying
-  //   );
-  // }
+  // on click event makes play mode on/off
   handlePlay = () => {
     if (!this.state.play) {
       this.setState({ playButton: "STOP" });
       this.setState({ play: true });
       this.props.playLoop();
-      // this.playTheLoop();
-    } else {
+    } else if (this.state.play) {
       this.setState({ playButton: "PLAY" });
       this.setState({ play: false });
       this.props.stopLoop();
     }
   };
-
-  // playTheLoop = () => {
-  //   this.props.audiosPlaying.map((element) => {
-  //     console.log("array in audiosplaying map", this.props.audiosPlaying);
-
-  //     console.log("element in audiosplaying map", element);
-  //     element.play();
-  //   });
-  // };
-
   render() {
-    // console.log("this.props.audiosPlaying", this.props.audiosPlaying);
-    const { playButton } = this.state;
-
-    // this.props.audiosPlaying.map((element) => {
-    //   console.log("array in audiosplaying map", this.props.audiosPlaying);
-
-    //   console.log("element in audiosplaying map", element);
-    //   element.play();
-    // });
-    {
+    const { playButton, play } = this.state;
+    //checking if play mode is on
+    if (play) {
       this.props.audiosPlaying.map((element) => {
-        console.log("array in audiosplaying map", this.props.audiosPlaying);
-
-        // console.log("element in audiosplaying map", element);
         element.play();
       });
     }
-
     return (
       <div className="container">
         <div className="buttonDiv">
@@ -67,7 +40,6 @@ class AllPads extends React.Component {
         </div>
         <div className="allPadsDiv">
           {this.props.audioFiles.map((element, index) => {
-            // console.log("element", element);
             return <Pad key={index} padInfo={element} />;
           })}
         </div>

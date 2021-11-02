@@ -16,14 +16,12 @@ export const stopLoop = (value) => {
   };
 };
 export const addPad = (value) => {
-  // console.log("value in action", value);
   return {
     type: ADD_AUDIO,
     payload: value,
   };
 };
 export const removePad = (value) => {
-  // console.log("value in action removePad", value);
   return {
     type: REMOVE_AUDIO,
     payload: value,
